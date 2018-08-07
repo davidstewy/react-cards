@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 /*
  * CardGroup
@@ -12,19 +12,45 @@ import React from 'react';
  * The above would render a card group with a single child in it.
  *
  */
-const CardGroup = (props) => (
-    <div className="cardGroup">
-        {props.children}
-    </div>
-);
+const CardGroup = props => <div className="cardGroup">{props.children}</div>;
 
-const Card = (props) => (
-    <div>TODO: Implement Card Component</div>
+const Card = props => (
+  <div className="card cardGroup__card">
+    <div className="card__description cardGroup__cardDescription">
+      <div className={`icon fa ${props.icon} card__descriptionIcon`} />
+      <div className="card__descriptionText">
+        {props.description}
+        {props.hint ? (
+          <React.Fragment>
+            <br />
+            {props.hint}
+          </React.Fragment>
+        ) : null}
+      </div>
+    </div>
+    <div className="card__price">{props.price}</div>
+  </div>
 );
 
 const App = () => (
-    <div className="cardGroup">
-        <div className="card cardGroup__card">
+  <CardGroup>
+    <Card description="Trial" icon="fa-thumbs-o-up" price="Free!" />
+
+    <Card
+      description="Basic Tier"
+      icon="fa-trophy"
+      price="$10.00"
+      hint="(most popular)"
+    />
+
+    <Card
+      description="Advanced Tier"
+      icon="fa-bolt"
+      price="$6,000.00"
+      hint="(only for enterprise-level professionals)"
+    />
+
+    {/* <div className="card cardGroup__card">
             <div className="card__description cardGroup__cardDescription">
                 <div className="icon fa fa-thumbs-o-up card__descriptionIcon" />
                 <div className="card__descriptionText">
@@ -54,8 +80,8 @@ const App = () => (
                 </div>
             </div>
             <div className="card__price">$6,000.00</div>
-        </div>
-    </div>
+        </div> */}
+  </CardGroup>
 );
 
 export default App;
